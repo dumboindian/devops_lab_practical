@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aakash's Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        #clock {
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 20px 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #date {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        .tagline {
+            margin-top: 20px;
+            font-style: italic;
+            color: #fbc531;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Sagar's World</h1>
+    <div id="clock">00:00:00</div>
+    <div id="date">Loading Date...</div>
+    <p class="tagline">Success is a journey, not a destination.</p>
+</div>
+
+<script>
+    function updateTime() {
+        const now = new Date();
+        
+        // Update Clock
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+
+        // Update Date
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('date').textContent = now.toLocaleDateString(undefined, options);
+    }
+
+    // Refresh time every second
+    setInterval(updateTime, 1000);
+    updateTime();
+</script>
+
+</body>
+</html>
